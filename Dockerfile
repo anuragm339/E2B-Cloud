@@ -21,8 +21,8 @@ COPY gradle gradle/
 # Copy source code
 COPY src src/
 
-# Build application
-RUN ./gradlew build -x test --no-daemon
+# Build application with shadowJar to create fat JAR
+RUN ./gradlew shadowJar -x test --no-daemon
 
 # Stage 2: Runtime
 FROM eclipse-temurin:17-jre-jammy
@@ -32,7 +32,7 @@ RUN groupadd -r cloudserver && useradd -r -g cloudserver cloudserver
 
 WORKDIR /app
 
-# Copy built JAR from builder stage
+# Copy built fat JAR from builder stage (shadow creates -all.jar)
 COPY --from=builder /build/build/libs/*-all.jar app.jar
 
 # Create data directory with proper permissions
