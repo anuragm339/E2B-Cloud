@@ -1,0 +1,26 @@
+micronaut:
+  application:
+    name: cloud-server
+  server:
+    port: 8080
+    netty:
+      max-header-size: 16KB
+  executors:
+    scheduled:
+      type: scheduled
+      core-pool-size: 2
+
+# SQLite database configuration
+sqlite:
+  db:
+    path: ${SQLITE_DB_PATH:/data/events.db}
+
+# Data mode: TEST or PRODUCTION
+data:
+  mode: ${DATA_MODE:TEST}
+
+# Logging configuration
+logger:
+  levels:
+    com.messaging.cloudserver: INFO
+    io.micronaut: INFO
