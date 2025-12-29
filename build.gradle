@@ -21,6 +21,7 @@ dependencies {
 
     // Micronaut runtime
     runtimeOnly("ch.qos.logback:logback-classic")
+    runtimeOnly("org.yaml:snakeyaml")
 
     // SQLite JDBC driver
     implementation("org.xerial:sqlite-jdbc:3.45.0.0")

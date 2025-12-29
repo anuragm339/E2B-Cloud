@@ -142,6 +142,7 @@ GET /registry/topology?nodeId=broker-001
 |----------|---------|-------------|
 | `DATA_MODE` | `TEST` | Mode: TEST or PRODUCTION |
 | `SQLITE_DB_PATH` | `/data/events.db` | Path to SQLite database |
+| `SERVER_PUBLIC_URL` | `http://cloud-server:8080` | Public URL returned to clients (use `localhost` for local dev) |
 | `JAVA_OPTS` | `-Xms64m -Xmx256m` | JVM options |
 
 ### application.yml

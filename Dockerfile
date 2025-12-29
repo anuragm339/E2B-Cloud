@@ -5,14 +5,15 @@ FROM gradle:8.5-jdk17 AS builder
 
 WORKDIR /build
 
-# Copy CA certificate and import it into JDK trust store
-COPY ../provider/mvnrepository.com.pem /tmp/mvnrepository.com.pem
-RUN keytool -import -trustcacerts -noprompt \
-    -alias messaging_maven_ca \
-    -file /tmp/mvnrepository.com.pem \
-    -keystore /opt/java/openjdk/lib/security/cacerts \
-    -storepass changeit && \
-    rm /tmp/mvnrepository.com.pem
+# Copy CA certificate and import it into JDK trust store (if needed)
+# Uncomment if you have a custom CA certificate:
+# COPY ../provider/mvnrepository.com.pem /tmp/mvnrepository.com.pem
+# RUN keytool -import -trustcacerts -noprompt \
+#     -alias messaging_maven_ca \
+#     -file /tmp/mvnrepository.com.pem \
+#     -keystore /opt/java/openjdk/lib/security/cacerts \
+#     -storepass changeit && \
+#     rm /tmp/mvnrepository.com.pem
 
 # Copy gradle files first for better caching
 COPY build.gradle settings.gradle* gradlew* ./

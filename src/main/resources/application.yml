@@ -13,11 +13,19 @@ micronaut:
 # SQLite database configuration
 sqlite:
   db:
-    path: ${SQLITE_DB_PATH:/data/events.db}
+    path: ${SQLITE_DB_PATH:/Users/anuragmishra/Desktop/workspace/messaging/data/events.db}
 
 # Data mode: TEST or PRODUCTION
 data:
   mode: ${DATA_MODE:TEST}
+
+# Server URL configuration
+# - For Docker: use service name (cloud-server)
+# - For localhost: use localhost
+# - For production: use actual domain
+server:
+  public:
+    url: ${SERVER_PUBLIC_URL:http://localhost:8080}
 
 # Logging configuration
 logger:

@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Message {
+    @JsonProperty("offset")
+    private Long offset;
 
     @JsonProperty("msgKey")
     private String msgKey;
